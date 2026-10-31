@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ifs24023-pabwe2026-proyek1.yogitrim.my.id/sitemap.xml

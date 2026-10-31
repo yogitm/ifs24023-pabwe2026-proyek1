@@ -1,0 +1,94 @@
+import { createRouter, createWebHistory } from 'vue-router';
+
+// Lazy loading views for code-splitting and reduced unused JavaScript
+const DaftarView = () => import('../views/DaftarView.vue');
+const LayarTungguView = () => import('../views/LayarTungguView.vue');
+const DashboardView = () => import('../views/DashboardView.vue');
+const RekamMedisView = () => import('../views/RekamMedisView.vue');
+const LoginView = () => import('../views/LoginView.vue');
+
+const routes = [
+  {
+    path: '/',
+    redirect: '/daftar'
+  },
+  {
+    path: '/daftar',
+    name: 'Daftar',
+    component: DaftarView,
+    meta: { title: 'Pendaftaran Pasien Mandiri' }
+  },
+  {
+    path: '/layar-tunggu',
+    name: 'LayarTunggu',
+    component: LayarTungguView,
+    meta: { title: 'Layar Monitor Ruang Tunggu' }
+  },
+  {
+    path: '/auth/login',
+    name: 'Login',
+    component: LoginView,
+    meta: { title: 'Portal Otentikasi Dokter' }
+  },
+  {
+    path: '/login',
+    redirect: '/auth/login'
+  },
+  {
+    path: '/dashboard',
+    name: 'Dashboard',
+    component: DashboardView,
+    meta: { 
+      title: 'Dashboard Dokter & Pemanggilan',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/rekam-medis',
+    name: 'RekamMedis',
+    component: RekamMedisView,
+    meta: { 
+      title: 'Rekam Medis Pasien',
+      requiresAuth: true
+    }
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/daftar'
+  }
+];
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes
+});
+
+// Navigation Guard: Memastikan pasien tidak bisa mengakses dashboard pemanggilan & rekam medis
+router.beforeEach((to, from, next) => {
+  document.title = to.meta.title 
+    ? `${to.meta.title} - MedQueue` 
+    : 'MedQueue - Sistem Antrean Puskesmas';
+
+  const token = localStorage.getItem('medqueue_token');
+
+  // Jika rute membutuhkan otentikasi dokter tetapi token tidak ada
+  if (to.meta.requiresAuth && !token) {
+    next({
+      path: '/auth/login',
+      query: {
+        redirect: to.fullPath,
+        unauthorized: '1'
+      }
+    });
+  } 
+  // Jika pengguna sudah login dokter dan membuka halaman login
+  else if ((to.path === '/auth/login' || to.path === '/login') && token) {
+    next({ path: '/dashboard' });
+  } 
+  else {
+    next();
+  }
+});
+
+export default router;
+
