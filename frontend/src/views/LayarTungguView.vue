@@ -102,12 +102,11 @@ const toggleAudio = () => {
         <button
           @click="toggleAudio"
           class="flex items-center space-x-2 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all cursor-pointer"
-          :class="isAudioEnabled ? 'bg-emerald-950/80 border-emerald-400/60 text-emerald-300' : 'bg-slate-800 border-slate-600 text-slate-200 hover:text-white'"
-          title="Nyalakan/Matikan Suara Panggilan Otomatis"
-          aria-label="Nyalakan atau matikan suara panggilan otomatis"
+          :class="isAudioEnabled ? 'bg-slate-900 border-emerald-400 text-emerald-300' : 'bg-slate-800 border-slate-600 text-slate-200 hover:text-white'"
+          title="Nyalakan atau matikan suara panggilan otomatis"
         >
-          <Volume2 v-if="isAudioEnabled" class="w-4 h-4 text-emerald-300" />
-          <VolumeX v-else class="w-4 h-4 text-slate-300" />
+          <Volume2 v-if="isAudioEnabled" class="w-4 h-4 text-emerald-300" aria-hidden="true" />
+          <VolumeX v-else class="w-4 h-4 text-slate-300" aria-hidden="true" />
           <span>{{ isAudioEnabled ? 'Suara Aktif' : 'Suara Senyap' }}</span>
         </button>
 
@@ -127,9 +126,9 @@ const toggleAudio = () => {
     <!-- Display: Nomor Antrean Aktif -->
     <section aria-label="Monitor Antrean Pasien" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
       <div class="w-full max-w-4xl mx-auto">
-        <!-- Badge Status -->
-        <div class="inline-flex items-center px-6 py-2 rounded-full bg-emerald-950/80 border border-emerald-400/60 text-emerald-300 text-sm md:text-base font-extrabold uppercase tracking-widest mb-6 animate-pulse">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-300 mr-2.5 shadow-[0_0_8px_#6ee7b7]"></span>
+        <!-- Badge Status (Solid background with high contrast WCAG AAA and no opacity pulse) -->
+        <div class="inline-flex items-center px-6 py-2.5 rounded-full bg-slate-900 border-2 border-emerald-400 text-emerald-300 text-sm md:text-base font-black uppercase tracking-widest mb-6 shadow-[0_0_20px_rgba(52,211,153,0.25)]">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2.5 shadow-[0_0_8px_#34d399] animate-ping"></span>
           Antrean Saat Ini
         </div>
 
