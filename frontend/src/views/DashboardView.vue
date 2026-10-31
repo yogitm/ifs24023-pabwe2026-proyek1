@@ -270,7 +270,6 @@ onUnmounted(() => {
           :disabled="loading"
           class="inline-flex items-center px-4 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 hover:bg-slate-50 text-sm font-semibold shadow-sm transition disabled:opacity-50 cursor-pointer"
           title="Segarkan Data"
-          aria-label="Segarkan data antrean"
         >
           <RefreshCw class="w-4 h-4 mr-2" :class="{ 'animate-spin': loading }" />
           <span>Refresh</span>
@@ -340,7 +339,7 @@ onUnmounted(() => {
               <!-- Kolom: Nomor Antrean -->
               <td class="px-6 py-4 whitespace-nowrap">
                 <span class="inline-flex items-center px-3 py-1 rounded-lg text-base font-extrabold font-mono tracking-wider"
-                  :class="item.status === 'dipanggil' ? 'bg-emerald-600 text-white shadow-sm shadow-emerald-200' : 'bg-slate-100 text-slate-800'"
+                  :class="item.status === 'dipanggil' ? 'bg-emerald-800 text-white shadow-sm shadow-emerald-200' : 'bg-slate-100 text-slate-800'"
                 >
                   {{ item.nomor_antrean }}
                 </span>
@@ -384,9 +383,8 @@ onUnmounted(() => {
                   <button
                     @click="handleCall(item.id, item.nomor_antrean)"
                     :disabled="actionLoading[item.id]"
-                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white shadow-sm transition disabled:opacity-50 cursor-pointer"
+                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white shadow-sm transition disabled:opacity-50 cursor-pointer"
                     title="Panggil pasien ini ke layar TV"
-                    :aria-label="'Panggil pasien nomor ' + item.nomor_antrean"
                   >
                     <Megaphone class="w-3.5 h-3.5 mr-1" />
                     <span>Panggil</span>
@@ -398,7 +396,6 @@ onUnmounted(() => {
                     :disabled="actionLoading[item.id]"
                     class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 hover:bg-slate-300 active:bg-slate-400 text-slate-800 transition disabled:opacity-50 cursor-pointer"
                     title="Tandai pasien telah selesai diperiksa"
-                    :aria-label="'Selesaikan pemeriksaan nomor ' + item.nomor_antrean"
                   >
                     <CheckCircle class="w-3.5 h-3.5 mr-1 text-slate-700" />
                     <span>Selesai</span>
@@ -524,7 +521,7 @@ onUnmounted(() => {
               @click="confirmFinish(true)"
               :disabled="finishModal.isSaving"
               type="button"
-              class="px-4 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-200 transition disabled:opacity-50"
+              class="px-4 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-xs font-bold shadow-md shadow-emerald-200 transition disabled:opacity-50"
             >
               {{ finishModal.isSaving ? 'Menyimpan...' : 'Simpan ke Rekam Medis' }}
             </button>

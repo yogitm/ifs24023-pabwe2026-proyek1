@@ -207,7 +207,6 @@ onMounted(() => {
           @click="fetchRecords"
           :disabled="loading"
           class="inline-flex items-center px-4 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 hover:bg-slate-50 text-sm font-semibold shadow-sm transition disabled:opacity-50 cursor-pointer"
-          aria-label="Segarkan data rekam medis"
         >
           <RefreshCw class="w-4 h-4 mr-2" :class="{ 'animate-spin': loading }" />
           <span>Refresh</span>
@@ -438,7 +437,7 @@ onMounted(() => {
             @click="handleSaveEdit"
             :disabled="isSaving"
             type="button"
-            class="px-5 py-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold shadow-md shadow-emerald-200 transition disabled:opacity-50"
+            class="px-5 py-2 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white text-sm font-bold shadow-md shadow-emerald-200 transition disabled:opacity-50"
           >
             {{ isSaving ? 'Menyimpan...' : 'Simpan Perubahan' }}
           </button>

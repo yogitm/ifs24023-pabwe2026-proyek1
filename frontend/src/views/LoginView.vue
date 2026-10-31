@@ -216,7 +216,7 @@ const setDemoAccount = (user, pass) => {
               data-testid="btn-submit"
               type="submit"
               :disabled="loading"
-              class="btn-submit w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold text-sm shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed group cursor-pointer"
+              class="btn-submit w-full py-3.5 px-4 rounded-xl bg-emerald-800 hover:bg-emerald-900 active:bg-emerald-950 text-white font-bold text-sm shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed group cursor-pointer"
             >
               <span v-if="!loading" class="flex items-center space-x-2">
                 <span>Masuk ke Dashboard Dokter</span>
@@ -244,7 +244,6 @@ const setDemoAccount = (user, pass) => {
                 type="button"
                 @click="setDemoAccount('dokter', 'password123')"
                 class="text-left p-3 rounded-xl border border-slate-300 hover:border-emerald-600 bg-slate-50 hover:bg-emerald-50/50 transition-all group"
-                aria-label="Gunakan akun demo dr. Budi Santoso"
               >
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-xs text-slate-900 group-hover:text-emerald-800">dr. Budi Santoso</span>
@@ -258,7 +257,6 @@ const setDemoAccount = (user, pass) => {
                 type="button"
                 @click="setDemoAccount('dr.siti', 'password123')"
                 class="text-left p-3 rounded-xl border border-slate-300 hover:border-emerald-600 bg-slate-50 hover:bg-emerald-50/50 transition-all group"
-                aria-label="Gunakan akun demo dr. Siti Aminah"
               >
                 <div class="flex items-center justify-between">
                   <span class="font-bold text-xs text-slate-900 group-hover:text-emerald-800">dr. Siti Aminah</span>

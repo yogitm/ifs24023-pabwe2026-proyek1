@@ -68,8 +68,8 @@ const printTicket = () => {
         v-if="registeredQueue" 
         class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden text-center transition-all animate-fadeIn"
       >
-        <div class="bg-emerald-600 px-6 py-6 text-white">
-          <div class="inline-flex p-3 bg-emerald-500/30 rounded-full mb-3">
+        <div class="bg-emerald-800 px-6 py-6 text-white">
+          <div class="inline-flex p-3 bg-emerald-700/40 rounded-full mb-3">
             <CheckCircle2 class="w-10 h-10 text-white" />
           </div>
           <h2 class="text-xl font-bold tracking-tight">Pendaftaran Berhasil!</h2>
@@ -121,7 +121,7 @@ const printTicket = () => {
             <button
               @click="resetForm"
               type="button"
-              class="flex-1 inline-flex items-center justify-center px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm transition-colors shadow-md shadow-emerald-200"
+              class="flex-1 inline-flex items-center justify-center px-4 py-3 rounded-xl bg-emerald-800 hover:bg-emerald-900 text-white font-semibold text-sm transition-colors shadow-md shadow-emerald-200"
             >
               <RefreshCw class="w-4 h-4 mr-2" />
               Daftar Pasien Baru
@@ -136,7 +136,7 @@ const printTicket = () => {
         class="bg-white rounded-2xl shadow-xl border border-slate-100 overflow-hidden"
       >
         <!-- Header Kartu -->
-        <div class="px-6 py-6 border-b border-slate-100 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+        <div class="px-6 py-6 border-b border-slate-100 bg-gradient-to-r from-emerald-800 to-teal-800 text-white">
           <h2 class="text-xl font-bold">Pendaftaran Pasien Mandiri</h2>
           <p class="text-emerald-100 text-sm mt-1">
             Masukkan data diri Anda untuk mengambil nomor antrean pemeriksaan.
@@ -222,7 +222,7 @@ const printTicket = () => {
               name="btn-submit"
               type="submit"
               :disabled="loading"
-              class="btn-submit w-full flex items-center justify-center px-6 py-3.5 rounded-xl text-white font-bold text-base bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] transition-all shadow-lg shadow-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="btn-submit w-full flex items-center justify-center px-6 py-3.5 rounded-xl text-white font-bold text-base bg-emerald-800 hover:bg-emerald-900 active:scale-[0.99] transition-all shadow-lg shadow-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               <svg 
                 v-if="loading" 
