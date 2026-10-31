@@ -198,11 +198,13 @@ const setDemoAccount = (user, pass) => {
                 <button
                   type="button"
                   @click="showPassword = !showPassword"
-                  class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none"
-                  tabindex="-1"
+                  class="absolute inset-y-0 right-0 pr-3.5 flex items-center text-slate-600 hover:text-slate-900 focus:outline-none"
+                  aria-label="Tampilkan atau sembunyikan kata sandi"
+                  title="Tampilkan atau sembunyikan kata sandi"
                 >
-                  <EyeOff v-if="showPassword" class="w-5 h-5" />
-                  <Eye v-else class="w-5 h-5" />
+                  <EyeOff v-if="showPassword" class="w-5 h-5" aria-hidden="true" />
+                  <Eye v-else class="w-5 h-5" aria-hidden="true" />
+                  <span class="sr-only">Tampilkan atau sembunyikan kata sandi</span>
                 </button>
               </div>
             </div>
@@ -214,7 +216,7 @@ const setDemoAccount = (user, pass) => {
               data-testid="btn-submit"
               type="submit"
               :disabled="loading"
-              class="btn-submit w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-sm shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed group cursor-pointer"
+              class="btn-submit w-full py-3.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white font-bold text-sm shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed group cursor-pointer"
             >
               <span v-if="!loading" class="flex items-center space-x-2">
                 <span>Masuk ke Dashboard Dokter</span>
@@ -231,9 +233,9 @@ const setDemoAccount = (user, pass) => {
           </form>
 
           <!-- Kotak Akses Cepat Akun Demo (Dokter) -->
-          <div class="pt-4 border-t border-slate-100">
-            <div class="flex items-center space-x-1.5 text-xs font-bold text-slate-500 uppercase tracking-wider mb-3">
-              <Sparkles class="w-3.5 h-3.5 text-amber-500" />
+          <div class="pt-4 border-t border-slate-200">
+            <div class="flex items-center space-x-1.5 text-xs font-bold text-slate-700 uppercase tracking-wider mb-3">
+              <Sparkles class="w-3.5 h-3.5 text-amber-600" />
               <span>Akun Demo Dokter Terdaftar</span>
             </div>
             
@@ -241,39 +243,41 @@ const setDemoAccount = (user, pass) => {
               <button
                 type="button"
                 @click="setDemoAccount('dokter', 'password123')"
-                class="text-left p-3 rounded-xl border border-slate-200 hover:border-emerald-400 bg-slate-50/70 hover:bg-emerald-50/40 transition-all group"
+                class="text-left p-3 rounded-xl border border-slate-300 hover:border-emerald-600 bg-slate-50 hover:bg-emerald-50/50 transition-all group"
+                aria-label="Gunakan akun demo dr. Budi Santoso"
               >
                 <div class="flex items-center justify-between">
-                  <span class="font-bold text-xs text-slate-800 group-hover:text-emerald-700">dr. Budi Santoso</span>
-                  <KeyRound class="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+                  <span class="font-bold text-xs text-slate-900 group-hover:text-emerald-800">dr. Budi Santoso</span>
+                  <KeyRound class="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-700" />
                 </div>
-                <div class="text-[11px] text-slate-500 mt-0.5">Spesialis Penyakit Dalam</div>
-                <div class="text-[10px] text-slate-400 font-mono mt-1">user: dokter | pass: password123</div>
+                <div class="text-[11px] text-slate-700 mt-0.5 font-medium">Spesialis Penyakit Dalam</div>
+                <div class="text-[11px] text-slate-800 font-semibold font-mono mt-1">user: dokter | pass: password123</div>
               </button>
 
               <button
                 type="button"
                 @click="setDemoAccount('dr.siti', 'password123')"
-                class="text-left p-3 rounded-xl border border-slate-200 hover:border-emerald-400 bg-slate-50/70 hover:bg-emerald-50/40 transition-all group"
+                class="text-left p-3 rounded-xl border border-slate-300 hover:border-emerald-600 bg-slate-50 hover:bg-emerald-50/50 transition-all group"
+                aria-label="Gunakan akun demo dr. Siti Aminah"
               >
                 <div class="flex items-center justify-between">
-                  <span class="font-bold text-xs text-slate-800 group-hover:text-emerald-700">dr. Siti Aminah</span>
-                  <KeyRound class="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600" />
+                  <span class="font-bold text-xs text-slate-900 group-hover:text-emerald-800">dr. Siti Aminah</span>
+                  <KeyRound class="w-3.5 h-3.5 text-slate-600 group-hover:text-emerald-700" />
                 </div>
-                <div class="text-[11px] text-slate-500 mt-0.5">Spesialis Anak</div>
-                <div class="text-[10px] text-slate-400 font-mono mt-1">user: dr.siti | pass: password123</div>
+                <div class="text-[11px] text-slate-700 mt-0.5 font-medium">Spesialis Anak</div>
+                <div class="text-[11px] text-slate-800 font-semibold font-mono mt-1">user: dr.siti | pass: password123</div>
               </button>
             </div>
           </div>
 
           <!-- Bagian Pasien (Pengingat) -->
           <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 text-center space-y-2">
-            <p class="text-xs text-slate-600">
-              Apakah Anda adalah <span class="font-semibold text-slate-800">Pasien</span>? Pasien tidak perlu login di sini.
+            <p class="text-xs text-slate-700">
+              Apakah Anda adalah <span class="font-bold text-slate-900">Pasien</span>? Pasien tidak perlu login di sini.
             </p>
             <router-link
               to="/daftar"
-              class="inline-flex items-center space-x-1.5 text-xs font-bold text-emerald-700 hover:text-emerald-800 hover:underline"
+              class="inline-flex items-center space-x-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 hover:underline"
             >
               <ArrowLeft class="w-3.5 h-3.5" />
               <span>Kembali ke Halaman Pendaftaran Mandiri Pasien</span>
@@ -284,7 +288,7 @@ const setDemoAccount = (user, pass) => {
       </div>
 
       <!-- Footer Info -->
-      <div class="mt-6 text-center text-xs text-slate-400">
+      <div class="mt-6 text-center text-xs text-slate-600 font-medium">
         MedQueue Sistem Manajemen Antrean & Rekam Medis © 2026
       </div>
     </div>

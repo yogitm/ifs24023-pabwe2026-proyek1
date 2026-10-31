@@ -246,7 +246,7 @@ onUnmounted(() => {
             🩺 {{ currentUser.nama }}
           </span>
         </div>
-        <p class="text-sm text-slate-500 mt-1">
+        <p class="text-sm text-slate-700 mt-1">
           Kelola antrean dan rekam medis pasien di ruang periksa dokter.
         </p>
       </div>
@@ -255,12 +255,12 @@ onUnmounted(() => {
       <div class="flex items-center space-x-3">
         <!-- Input Search -->
         <div class="relative">
-          <Search class="w-4 h-4 absolute left-3.5 top-3 text-slate-400" />
+          <Search class="w-4 h-4 absolute left-3.5 top-3 text-slate-500" />
           <input 
             v-model="searchQuery"
             type="text"
             placeholder="Cari nomor / nama..."
-            class="pl-9 pr-4 py-2 rounded-xl border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
+            class="pl-9 pr-4 py-2 rounded-xl border border-slate-300 text-sm bg-white text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition"
           />
         </div>
 
@@ -268,8 +268,9 @@ onUnmounted(() => {
         <button
           @click="fetchQueues"
           :disabled="loading"
-          class="inline-flex items-center px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 text-sm font-semibold shadow-sm transition disabled:opacity-50"
+          class="inline-flex items-center px-4 py-2 rounded-xl bg-white border border-slate-300 text-slate-800 hover:bg-slate-50 text-sm font-semibold shadow-sm transition disabled:opacity-50 cursor-pointer"
           title="Segarkan Data"
+          aria-label="Segarkan data antrean"
         >
           <RefreshCw class="w-4 h-4 mr-2" :class="{ 'animate-spin': loading }" />
           <span>Refresh</span>
@@ -279,49 +280,49 @@ onUnmounted(() => {
 
     <!-- KPI Cards -->
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center space-x-4">
-        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-600 flex items-center justify-center">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center">
           <Users class="w-6 h-6" />
         </div>
         <div>
-          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Antrean Aktif</p>
+          <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">Total Antrean Aktif</p>
           <p class="text-2xl font-bold text-slate-900">{{ totalAktif }} Pasien</p>
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center space-x-4">
-        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center">
           <Megaphone class="w-6 h-6" />
         </div>
         <div>
-          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Sedang Dipanggil</p>
-          <p class="text-2xl font-bold text-emerald-600">{{ totalDipanggil }} Pasien</p>
+          <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">Sedang Dipanggil</p>
+          <p class="text-2xl font-bold text-emerald-700">{{ totalDipanggil }} Pasien</p>
         </div>
       </div>
 
-      <div class="bg-white rounded-2xl p-5 border border-slate-100 shadow-sm flex items-center space-x-4">
-        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+      <div class="bg-white rounded-2xl p-5 border border-slate-200 shadow-sm flex items-center space-x-4">
+        <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center">
           <Clock class="w-6 h-6" />
         </div>
         <div>
-          <p class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Dalam Antrean (Menunggu)</p>
-          <p class="text-2xl font-bold text-amber-600">{{ totalMenunggu }} Pasien</p>
+          <p class="text-xs font-bold text-slate-600 uppercase tracking-wider">Dalam Antrean (Menunggu)</p>
+          <p class="text-2xl font-bold text-amber-700">{{ totalMenunggu }} Pasien</p>
         </div>
       </div>
     </div>
 
     <!-- Tabel Antrean Pasien -->
     <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
-      <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
-        <h3 class="font-bold text-slate-800 text-base">Daftar Antrean Pasien</h3>
-        <span class="text-xs text-slate-400 font-medium">Auto-refresh setiap 5 detik</span>
+      <div class="px-6 py-4 border-b border-slate-200 flex items-center justify-between">
+        <h3 class="font-bold text-slate-900 text-base">Daftar Antrean Pasien</h3>
+        <span class="text-xs text-slate-600 font-semibold">Auto-refresh setiap 5 detik</span>
       </div>
 
       <div class="overflow-x-auto">
         <table class="w-full text-left border-collapse" aria-label="Daftar Antrean Pasien">
           <caption class="sr-only">Tabel Daftar Antrean Pasien Puskesmas</caption>
           <thead>
-            <tr class="bg-slate-50/80 border-b border-slate-200 text-xs font-bold text-slate-500 uppercase tracking-wider">
+            <tr class="bg-slate-50 border-b border-slate-200 text-xs font-bold text-slate-700 uppercase tracking-wider">
               <th class="px-6 py-3.5">Nomor Antrean</th>
               <th class="px-6 py-3.5">Nama Pasien</th>
               <th class="px-6 py-3.5">Keluhan</th>
@@ -348,12 +349,12 @@ onUnmounted(() => {
               <!-- Kolom: Nama -->
               <td class="px-6 py-4 whitespace-nowrap">
                 <div class="font-bold text-slate-900">{{ item.nama }}</div>
-                <div class="text-xs text-slate-400 font-mono">NIK: {{ item.nomor_identitas }}</div>
+                <div class="text-xs text-slate-600 font-mono">NIK: {{ item.nomor_identitas }}</div>
               </td>
 
               <!-- Kolom: Keluhan -->
               <td class="px-6 py-4">
-                <span class="text-slate-600 line-clamp-2 max-w-xs">
+                <span class="text-slate-700 line-clamp-2 max-w-xs">
                   {{ item.keluhan_utama || '-' }}
                 </span>
               </td>
@@ -362,16 +363,16 @@ onUnmounted(() => {
               <td class="px-6 py-4 whitespace-nowrap">
                 <span 
                   v-if="item.status === 'dipanggil'"
-                  class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 animate-pulse"
+                  class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-900 border border-emerald-200 animate-pulse"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-600 mr-1.5"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-700 mr-1.5"></span>
                   Dipanggil
                 </span>
                 <span 
                   v-else
-                  class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-amber-100 text-amber-800"
+                  class="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200"
                 >
-                  <span class="w-1.5 h-1.5 rounded-full bg-amber-600 mr-1.5"></span>
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-700 mr-1.5"></span>
                   Menunggu
                 </span>
               </td>
@@ -383,8 +384,9 @@ onUnmounted(() => {
                   <button
                     @click="handleCall(item.id, item.nomor_antrean)"
                     :disabled="actionLoading[item.id]"
-                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white shadow-sm transition disabled:opacity-50"
+                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-emerald-700 hover:bg-emerald-800 active:bg-emerald-900 text-white shadow-sm transition disabled:opacity-50 cursor-pointer"
                     title="Panggil pasien ini ke layar TV"
+                    :aria-label="'Panggil pasien nomor ' + item.nomor_antrean"
                   >
                     <Megaphone class="w-3.5 h-3.5 mr-1" />
                     <span>Panggil</span>
@@ -394,18 +396,20 @@ onUnmounted(() => {
                   <button
                     @click="openFinishModal(item)"
                     :disabled="actionLoading[item.id]"
-                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 hover:bg-slate-300 active:bg-slate-400 text-slate-700 transition disabled:opacity-50"
+                    class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-200 hover:bg-slate-300 active:bg-slate-400 text-slate-800 transition disabled:opacity-50 cursor-pointer"
                     title="Tandai pasien telah selesai diperiksa"
+                    :aria-label="'Selesaikan pemeriksaan nomor ' + item.nomor_antrean"
                   >
-                    <CheckCircle class="w-3.5 h-3.5 mr-1 text-slate-500" />
+                    <CheckCircle class="w-3.5 h-3.5 mr-1 text-slate-700" />
                     <span>Selesai</span>
                   </button>
 
                   <!-- Tombol Edit: Edit Data Pasien -->
                   <button
                     @click="openEditModal(item)"
-                    class="inline-flex items-center p-1.5 rounded-lg border border-slate-200 text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition"
+                    class="inline-flex items-center p-1.5 rounded-lg border border-slate-300 text-slate-700 hover:text-blue-700 hover:bg-blue-50 transition cursor-pointer"
                     title="Edit Data Pasien / Antrean"
+                    :aria-label="'Edit data pasien nomor ' + item.nomor_antrean"
                   >
                     <Edit class="w-3.5 h-3.5" />
                   </button>
@@ -413,8 +417,9 @@ onUnmounted(() => {
                   <!-- Tombol Merah: Hapus Antrean -->
                   <button
                     @click="openDeleteModal(item)"
-                    class="inline-flex items-center p-1.5 rounded-lg border border-rose-200 text-rose-600 hover:bg-rose-50 transition"
+                    class="inline-flex items-center p-1.5 rounded-lg border border-rose-300 text-rose-700 hover:bg-rose-50 transition cursor-pointer"
                     title="Hapus / Batalkan Antrean"
+                    :aria-label="'Hapus antrean nomor ' + item.nomor_antrean"
                   >
                     <Trash2 class="w-3.5 h-3.5" />
                   </button>
@@ -424,10 +429,10 @@ onUnmounted(() => {
 
             <!-- Jika tidak ada antrean -->
             <tr v-if="filteredQueues.length === 0">
-              <td colspan="5" class="px-6 py-12 text-center text-slate-400">
-                <Users class="w-10 h-10 mx-auto text-slate-300 mb-2" />
-                <p class="font-semibold text-slate-600">Tidak ada antrean aktif saat ini</p>
-                <p class="text-xs text-slate-400 mt-1">
+              <td colspan="5" class="px-6 py-12 text-center text-slate-500">
+                <Users class="w-10 h-10 mx-auto text-slate-400 mb-2" />
+                <p class="font-bold text-slate-800">Tidak ada antrean aktif saat ini</p>
+                <p class="text-xs text-slate-600 mt-1 font-medium">
                   Pasien baru yang mendaftar akan otomatis muncul di sini.
                 </p>
               </td>
@@ -445,28 +450,29 @@ onUnmounted(() => {
       <div class="bg-white rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-100 space-y-4">
         <div class="flex items-center justify-between border-b border-slate-100 pb-3">
           <div class="flex items-center space-x-2">
-            <div class="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+            <div class="p-2 rounded-lg bg-emerald-50 text-emerald-700">
               <Stethoscope class="w-5 h-5" />
             </div>
             <div>
               <h3 class="font-bold text-slate-900">Selesaikan Pemeriksaan</h3>
-              <p class="text-xs text-slate-500">
+              <p class="text-xs text-slate-600">
                 Pasien: <span class="font-bold text-slate-800">{{ finishModal.queue?.nama }}</span> ({{ finishModal.queue?.nomor_antrean }})
               </p>
             </div>
           </div>
           <button 
             @click="finishModal.isOpen = false" 
-            class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100"
+            aria-label="Tutup modal pemeriksaan"
+            class="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer"
           >
             <X class="w-5 h-5" />
           </button>
         </div>
 
         <!-- Keluhan Awal -->
-        <div class="p-3 bg-slate-50 rounded-xl border border-slate-100 text-xs">
-          <span class="text-slate-400 font-semibold block mb-0.5">Keluhan Awal:</span>
-          <span class="text-slate-700">{{ finishModal.queue?.keluhan_utama || 'Tidak ada keluhan tertulis.' }}</span>
+        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 text-xs">
+          <span class="text-slate-700 font-semibold block mb-0.5">Keluhan Awal:</span>
+          <span class="text-slate-800">{{ finishModal.queue?.keluhan_utama || 'Tidak ada keluhan tertulis.' }}</span>
         </div>
 
         <!-- Input Diagnosa -->
@@ -540,14 +546,15 @@ onUnmounted(() => {
             </div>
             <div>
               <h3 class="font-bold text-slate-900">Edit Data Pasien</h3>
-              <p class="text-xs text-slate-500">
+              <p class="text-xs text-slate-600">
                 Antrean: <span class="font-bold font-mono text-slate-800">{{ editModal.queue?.nomor_antrean }}</span>
               </p>
             </div>
           </div>
           <button 
             @click="editModal.isOpen = false" 
-            class="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg hover:bg-slate-100"
+            aria-label="Tutup modal edit data"
+            class="text-slate-500 hover:text-slate-800 p-1.5 rounded-lg hover:bg-slate-100 cursor-pointer"
           >
             <X class="w-5 h-5" />
           </button>
@@ -561,7 +568,7 @@ onUnmounted(() => {
             <input
               v-model="editModal.nama"
               type="text"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               required
             />
           </div>
@@ -573,7 +580,7 @@ onUnmounted(() => {
             <input
               v-model="editModal.nomor_identitas"
               type="text"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm font-mono focus:outline-none focus:ring-2 focus:ring-blue-500 transition"
               required
             />
           </div>
@@ -585,7 +592,7 @@ onUnmounted(() => {
             <textarea
               v-model="editModal.keluhan"
               rows="3"
-              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 transition resize-none"
             ></textarea>
           </div>
         </div>
@@ -594,7 +601,7 @@ onUnmounted(() => {
           <button
             @click="editModal.isOpen = false"
             type="button"
-            class="px-4 py-2 rounded-xl text-slate-600 text-sm font-semibold hover:bg-slate-100 transition"
+            class="px-4 py-2 rounded-xl text-slate-700 text-sm font-semibold hover:bg-slate-100 transition cursor-pointer"
           >
             Batal
           </button>
@@ -602,7 +609,7 @@ onUnmounted(() => {
             @click="confirmEdit"
             :disabled="editModal.isSaving"
             type="button"
-            class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-200 transition disabled:opacity-50"
+            class="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold shadow-md shadow-blue-200 transition disabled:opacity-50 cursor-pointer"
           >
             {{ editModal.isSaving ? 'Menyimpan...' : 'Simpan Perubahan' }}
           </button>
@@ -622,11 +629,11 @@ onUnmounted(() => {
           </div>
           <div>
             <h3 class="font-bold text-slate-900 text-base">Hapus Antrean Pasien?</h3>
-            <p class="text-xs text-slate-400">Tindakan ini tidak dapat dibatalkan.</p>
+            <p class="text-xs text-slate-600 font-medium">Tindakan ini tidak dapat dibatalkan.</p>
           </div>
         </div>
 
-        <p class="text-sm text-slate-600 bg-slate-50 p-3.5 rounded-xl border border-slate-100">
+        <p class="text-sm text-slate-700 bg-slate-50 p-3.5 rounded-xl border border-slate-200">
           Apakah Anda yakin ingin membatalkan dan menghapus nomor antrean 
           <span class="font-bold font-mono text-slate-900">{{ deleteModal.queue?.nomor_antrean }}</span> 
           atas nama <span class="font-bold text-slate-900">{{ deleteModal.queue?.nama }}</span>?

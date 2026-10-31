@@ -1,9 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import DaftarView from '../views/DaftarView.vue';
-import LayarTungguView from '../views/LayarTungguView.vue';
-import DashboardView from '../views/DashboardView.vue';
-import RekamMedisView from '../views/RekamMedisView.vue';
-import LoginView from '../views/LoginView.vue';
+
+// Lazy loading views for code-splitting and reduced unused JavaScript
+const DaftarView = () => import('../views/DaftarView.vue');
+const LayarTungguView = () => import('../views/LayarTungguView.vue');
+const DashboardView = () => import('../views/DashboardView.vue');
+const RekamMedisView = () => import('../views/RekamMedisView.vue');
+const LoginView = () => import('../views/LoginView.vue');
 
 const routes = [
   {

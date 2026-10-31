@@ -77,34 +77,34 @@ const printTicket = () => {
         </div>
 
         <div class="p-8">
-          <p class="text-xs uppercase tracking-widest text-slate-400 font-semibold mb-1">Nomor Antrean Anda</p>
-          <div class="text-6xl sm:text-7xl font-extrabold text-emerald-600 font-mono-numbers my-4 tracking-wider">
+          <p class="text-xs uppercase tracking-widest text-slate-700 font-bold mb-1">Nomor Antrean Anda</p>
+          <div class="text-6xl sm:text-7xl font-extrabold text-emerald-700 font-mono-numbers my-4 tracking-wider">
             {{ registeredQueue.nomor_antrean }}
           </div>
 
           <!-- Rincian Pasien -->
-          <div class="bg-slate-50 rounded-xl p-4 text-left text-sm space-y-2 border border-slate-100 mb-6">
+          <div class="bg-slate-50 rounded-xl p-4 text-left text-sm space-y-2 border border-slate-200 mb-6">
             <div class="flex justify-between">
-              <span class="text-slate-500">Nama Pasien:</span>
-              <span class="font-semibold text-slate-800">{{ registeredQueue.nama }}</span>
+              <span class="text-slate-700 font-medium">Nama Pasien:</span>
+              <span class="font-semibold text-slate-900">{{ registeredQueue.nama }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-500">NIK:</span>
-              <span class="font-mono text-slate-800">{{ registeredQueue.nomor_identitas }}</span>
+              <span class="text-slate-700 font-medium">NIK:</span>
+              <span class="font-mono text-slate-900">{{ registeredQueue.nomor_identitas }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-500">Waktu Daftar:</span>
+              <span class="text-slate-700 font-medium">Waktu Daftar:</span>
               <span class="text-slate-800">{{ registeredQueue.waktu_daftar }}</span>
             </div>
             <div class="flex justify-between">
-              <span class="text-slate-500">Status:</span>
-              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-amber-100 text-amber-800">
+              <span class="text-slate-700 font-medium">Status:</span>
+              <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-bold bg-amber-100 text-amber-900 border border-amber-200">
                 Menunggu
               </span>
             </div>
           </div>
 
-          <p class="text-xs text-slate-400 mb-6">
+          <p class="text-xs text-slate-600 mb-6 font-medium">
             Mohon perhatikan layar monitor ruang tunggu saat nomor Anda dipanggil oleh petugas.
           </p>
 
@@ -156,11 +156,11 @@ const printTicket = () => {
 
           <!-- Input Nama -->
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="nama">
-              Nama Lengkap <span class="text-rose-500">*</span>
+            <label class="block text-sm font-semibold text-slate-800 mb-1.5" for="nama">
+              Nama Lengkap <span class="text-rose-600">*</span>
             </label>
             <div class="relative rounded-xl shadow-sm">
-              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
                 <User class="w-5 h-5" />
               </div>
               <input
@@ -169,18 +169,18 @@ const printTicket = () => {
                 type="text"
                 placeholder="Contoh: Budi Santoso"
                 required
-                class="block w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                class="block w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
             </div>
           </div>
 
           <!-- Input NIK -->
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="nik">
-              Nomor Identitas (NIK / KTP / Paspor) <span class="text-rose-500">*</span>
+            <label class="block text-sm font-semibold text-slate-800 mb-1.5" for="nik">
+              Nomor Identitas (NIK / KTP / Paspor) <span class="text-rose-600">*</span>
             </label>
             <div class="relative rounded-xl shadow-sm">
-              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-400">
+              <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
                 <CreditCard class="w-5 h-5" />
               </div>
               <input
@@ -190,19 +190,19 @@ const printTicket = () => {
                 maxlength="20"
                 placeholder="Contoh: 3201234567890001"
                 required
-                class="block w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 text-slate-800 placeholder-slate-400 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
+                class="block w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-500 font-mono focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition"
               />
             </div>
-            <p class="text-xs text-slate-400 mt-1">NIK digunakan sebagai identifikasi unik pasien.</p>
+            <p class="text-xs text-slate-600 font-medium mt-1">NIK digunakan sebagai identifikasi unik pasien.</p>
           </div>
 
           <!-- Input Keluhan Utama -->
           <div>
-            <label class="block text-sm font-semibold text-slate-700 mb-1.5" for="keluhan">
+            <label class="block text-sm font-semibold text-slate-800 mb-1.5" for="keluhan">
               Keluhan Utama
             </label>
             <div class="relative rounded-xl shadow-sm">
-              <div class="absolute top-3 left-3.5 pointer-events-none text-slate-400">
+              <div class="absolute top-3 left-3.5 pointer-events-none text-slate-500">
                 <FileText class="w-5 h-5" />
               </div>
               <textarea
@@ -210,7 +210,7 @@ const printTicket = () => {
                 v-model="form.keluhan"
                 rows="3"
                 placeholder="Jelaskan secara singkat gejala atau keluhan yang dirasakan..."
-                class="block w-full pl-11 pr-4 py-3 rounded-xl border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
+                class="block w-full pl-11 pr-4 py-3 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent transition resize-none"
               ></textarea>
             </div>
           </div>

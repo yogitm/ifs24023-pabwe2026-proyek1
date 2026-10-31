@@ -33,11 +33,11 @@ const handleLogout = () => {
 <template>
   <div class="min-h-screen flex flex-col bg-slate-50 text-slate-800">
     <!-- Header / Navigation Bar (Hanya tampil di luar mode Layar Tunggu) -->
-    <header v-if="!isLayarTunggu" class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <header v-if="!isLayarTunggu" aria-label="Navigasi Header MedQueue" class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
         <!-- Logo MedQueue -->
-        <router-link to="/" class="flex items-center space-x-3 group">
+        <router-link to="/" class="flex items-center space-x-3 group" aria-label="Halaman Utama MedQueue">
           <div class="w-10 h-10 rounded-xl bg-emerald-600 flex items-center justify-center text-white shadow-md shadow-emerald-200 group-hover:scale-105 transition-transform">
             <Stethoscope class="w-6 h-6" />
           </div>
@@ -46,12 +46,12 @@ const handleLogout = () => {
               <h1 class="text-lg font-bold text-slate-900 leading-tight">MedQueue</h1>
               <span class="px-1.5 py-0.2 rounded text-[10px] font-bold bg-emerald-100 text-emerald-800 uppercase tracking-wider">Klinik</span>
             </div>
-            <p class="text-xs text-slate-500 font-medium">Sistem Antrean & Rekam Medis</p>
+            <p class="text-xs text-slate-700 font-medium">Sistem Antrean & Rekam Medis</p>
           </div>
         </router-link>
 
         <!-- Navigation Links & Doctor Auth Controls -->
-        <div class="flex items-center space-x-1 sm:space-x-3">
+        <nav aria-label="Navigasi Utama" class="flex items-center space-x-1 sm:space-x-3">
           
           <!-- Menu Pendaftaran (Bisa diakses siapapun) -->
           <router-link
@@ -130,6 +130,7 @@ const handleLogout = () => {
             <button
               @click="showLogoutModal = true"
               title="Keluar dari sesi dokter"
+              aria-label="Keluar dari sesi dokter"
               class="flex items-center space-x-1.5 px-3 py-2 rounded-lg text-sm font-semibold text-rose-600 hover:text-rose-700 hover:bg-rose-50 border border-transparent hover:border-rose-200 transition-all cursor-pointer"
             >
               <LogOut class="w-4 h-4" />
@@ -137,12 +138,12 @@ const handleLogout = () => {
             </button>
           </div>
 
-        </div>
+        </nav>
       </div>
     </header>
 
     <!-- Main Content Area -->
-    <main class="flex-1 flex flex-col">
+    <main id="main-content" role="main" class="flex-1 flex flex-col">
       <router-view />
     </main>
 

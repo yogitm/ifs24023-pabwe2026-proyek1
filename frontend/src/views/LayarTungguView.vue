@@ -82,16 +82,16 @@ const toggleAudio = () => {
 <template>
   <div class="min-h-screen bg-slate-950 text-white flex flex-col justify-between selection:bg-emerald-500 selection:text-white">
     <!-- Top Bar Header -->
-    <header class="px-8 py-5 border-b border-slate-800 bg-slate-900/60 backdrop-blur-md flex items-center justify-between">
+    <header aria-label="Header Monitor Antrean" class="px-8 py-5 border-b border-slate-800 bg-slate-900/60 backdrop-blur-md flex items-center justify-between">
       <div class="flex items-center space-x-4">
-        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-300">
           <Stethoscope class="w-7 h-7" />
         </div>
         <div>
           <h1 class="text-2xl font-black tracking-wide text-slate-100 uppercase">
             Puskesmas / Klinik Sehat
           </h1>
-          <p class="text-xs text-slate-400 font-medium tracking-wider uppercase">
+          <p class="text-xs text-slate-200 font-medium tracking-wider uppercase">
             Sistem Informasi Monitor Ruang Tunggu
           </p>
         </div>
@@ -101,34 +101,35 @@ const toggleAudio = () => {
       <div class="flex items-center space-x-6">
         <button
           @click="toggleAudio"
-          class="flex items-center space-x-2 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all"
-          :class="isAudioEnabled ? 'bg-emerald-500/20 border-emerald-500/40 text-emerald-300' : 'bg-slate-800 border-slate-700 text-slate-400 hover:text-white'"
+          class="flex items-center space-x-2 px-3 py-1.5 rounded-lg border text-xs font-semibold transition-all cursor-pointer"
+          :class="isAudioEnabled ? 'bg-emerald-950/80 border-emerald-400/60 text-emerald-300' : 'bg-slate-800 border-slate-600 text-slate-200 hover:text-white'"
           title="Nyalakan/Matikan Suara Panggilan Otomatis"
+          aria-label="Nyalakan atau matikan suara panggilan otomatis"
         >
-          <Volume2 v-if="isAudioEnabled" class="w-4 h-4 text-emerald-400" />
-          <VolumeX v-else class="w-4 h-4 text-slate-400" />
+          <Volume2 v-if="isAudioEnabled" class="w-4 h-4 text-emerald-300" />
+          <VolumeX v-else class="w-4 h-4 text-slate-300" />
           <span>{{ isAudioEnabled ? 'Suara Aktif' : 'Suara Senyap' }}</span>
         </button>
 
         <div class="text-right hidden sm:block">
-          <div class="flex items-center space-x-1.5 text-xs text-slate-400 justify-end">
+          <div class="flex items-center space-x-1.5 text-xs text-slate-200 justify-end">
             <Calendar class="w-3.5 h-3.5" />
             <span>{{ currentDate }}</span>
           </div>
-          <div class="flex items-center space-x-2 text-2xl font-bold font-mono text-emerald-400 tracking-wider">
-            <Clock class="w-5 h-5 text-slate-500" />
+          <div class="flex items-center space-x-2 text-2xl font-bold font-mono text-emerald-300 tracking-wider">
+            <Clock class="w-5 h-5 text-emerald-400" />
             <span>{{ currentTime }}</span>
           </div>
         </div>
       </div>
     </header>
 
-    <!-- Main Display: Nomor Antrean Aktif yang Sangat Besar -->
-    <main class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+    <!-- Display: Nomor Antrean Aktif -->
+    <section aria-label="Monitor Antrean Pasien" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
       <div class="w-full max-w-4xl mx-auto">
         <!-- Badge Status -->
-        <div class="inline-flex items-center px-6 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm md:text-base font-bold uppercase tracking-widest mb-6 animate-pulse">
-          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 mr-2.5 shadow-[0_0_8px_#34d399]"></span>
+        <div class="inline-flex items-center px-6 py-2 rounded-full bg-emerald-950/80 border border-emerald-400/60 text-emerald-300 text-sm md:text-base font-extrabold uppercase tracking-widest mb-6 animate-pulse">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-300 mr-2.5 shadow-[0_0_8px_#6ee7b7]"></span>
           Antrean Saat Ini
         </div>
 
@@ -137,18 +138,18 @@ const toggleAudio = () => {
           v-if="activeQueue"
           class="transition-all transform duration-300"
         >
-          <div class="text-8xl sm:text-9xl md:text-[11rem] lg:text-[13rem] font-black font-mono-numbers text-emerald-400 tracking-widest leading-none drop-shadow-[0_0_50px_rgba(16,185,129,0.35)] select-none">
+          <div class="text-8xl sm:text-9xl md:text-[11rem] lg:text-[13rem] font-black font-mono-numbers text-emerald-300 tracking-widest leading-none drop-shadow-[0_0_50px_rgba(110,231,183,0.35)] select-none">
             {{ activeQueue.nomor_antrean }}
           </div>
 
           <!-- Informasi Pasien yang Dipanggil -->
-          <div class="mt-8 bg-slate-900/80 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto backdrop-blur-sm shadow-2xl">
-            <p class="text-xs font-semibold uppercase tracking-widest text-slate-400">Atas Nama Pasien</p>
+          <div class="mt-8 bg-slate-900/90 border border-slate-800 rounded-3xl p-6 sm:p-8 max-w-2xl mx-auto backdrop-blur-sm shadow-2xl">
+            <p class="text-xs font-bold uppercase tracking-widest text-slate-200">Atas Nama Pasien</p>
             <h2 class="text-2xl sm:text-4xl font-extrabold text-white mt-1 mb-3">
               {{ activeQueue.nama }}
             </h2>
-            <div class="inline-flex items-center px-4 py-1.5 rounded-xl bg-emerald-950/70 border border-emerald-800/60 text-emerald-300 text-sm font-medium">
-              <CheckCircle2 class="w-4 h-4 mr-2 text-emerald-400" />
+            <div class="inline-flex items-center px-4 py-1.5 rounded-xl bg-emerald-950/90 border border-emerald-700/80 text-emerald-200 text-sm font-semibold">
+              <CheckCircle2 class="w-4 h-4 mr-2 text-emerald-300" />
               Silakan Menuju Ruang Pemeriksaan / Poli Umum
             </div>
           </div>
@@ -156,30 +157,30 @@ const toggleAudio = () => {
 
         <!-- Tampilan Saat Belum Ada Antrean yang Dipanggil -->
         <div v-else class="py-16">
-          <div class="text-7xl sm:text-8xl md:text-9xl font-black font-mono-numbers text-slate-700 tracking-widest select-none">
+          <div class="text-7xl sm:text-8xl md:text-9xl font-black font-mono-numbers text-slate-600 tracking-widest select-none">
             ---
           </div>
-          <p class="text-xl sm:text-2xl font-bold text-slate-400 mt-6">
+          <p class="text-xl sm:text-2xl font-bold text-slate-100 mt-6">
             Belum ada antrean yang sedang dipanggil
           </p>
-          <p class="text-sm text-slate-500 mt-2">
+          <p class="text-sm text-slate-300 mt-2 font-medium">
             Silakan tunggu petugas medis memanggil nomor antrean Anda.
           </p>
         </div>
       </div>
-    </main>
+    </section>
 
     <!-- Bottom Running Text / Status Bar -->
-    <footer class="border-t border-slate-800 bg-slate-900/70 px-8 py-4 flex items-center justify-between text-xs text-slate-400">
+    <footer aria-label="Status Koneksi Monitor" class="border-t border-slate-800 bg-slate-900/80 px-8 py-4 flex items-center justify-between text-xs text-slate-300">
       <div class="flex items-center space-x-2">
         <span 
           class="w-2 h-2 rounded-full" 
-          :class="isConnected ? 'bg-emerald-500' : 'bg-rose-500'"
+          :class="isConnected ? 'bg-emerald-400' : 'bg-rose-500'"
         ></span>
-        <span>Status Server: {{ isConnected ? 'Terhubung (Polling 3s)' : 'Terputus' }}</span>
+        <span class="font-medium">Status Server: {{ isConnected ? 'Terhubung (Polling 3s)' : 'Terputus' }}</span>
       </div>
 
-      <div class="text-right truncate max-w-lg hidden sm:block text-slate-400">
+      <div class="text-right truncate max-w-lg hidden sm:block text-slate-300 font-medium">
         📢 Harap siapkan KTP / Kartu BPJS saat nomor Anda dipanggil ke ruang periksa.
       </div>
     </footer>
