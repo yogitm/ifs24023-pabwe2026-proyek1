@@ -26,7 +26,7 @@ const showLogoutModal = ref(false);
 const handleLogout = () => {
   clearAuth();
   showLogoutModal.value = false;
-  router.push('/login');
+  router.push('/auth/login');
 };
 </script>
 
@@ -100,9 +100,9 @@ const handleLogout = () => {
           <!-- Auth Actions: Belum Login vs Sudah Login -->
           <div v-if="!isAuthenticated" class="flex items-center">
             <router-link
-              to="/login"
+              to="/auth/login"
               class="flex items-center space-x-1.5 px-3 sm:px-4 py-2 rounded-lg text-sm font-bold transition-all shadow-sm"
-              :class="route.path === '/login' ? 'bg-emerald-600 text-white shadow-emerald-200' : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200'"
+              :class="route.path === '/auth/login' ? 'bg-emerald-600 text-white shadow-emerald-200' : 'bg-emerald-50 hover:bg-emerald-100 text-emerald-700 border border-emerald-200'"
             >
               <LogIn class="w-4 h-4" />
               <span>Login Dokter</span>

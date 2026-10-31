@@ -23,10 +23,14 @@ const routes = [
     meta: { title: 'Layar Monitor Ruang Tunggu' }
   },
   {
-    path: '/login',
+    path: '/auth/login',
     name: 'Login',
     component: LoginView,
     meta: { title: 'Portal Otentikasi Dokter' }
+  },
+  {
+    path: '/login',
+    redirect: '/auth/login'
   },
   {
     path: '/dashboard',
@@ -68,7 +72,7 @@ router.beforeEach((to, from, next) => {
   // Jika rute membutuhkan otentikasi dokter tetapi token tidak ada
   if (to.meta.requiresAuth && !token) {
     next({
-      path: '/login',
+      path: '/auth/login',
       query: {
         redirect: to.fullPath,
         unauthorized: '1'
@@ -76,7 +80,7 @@ router.beforeEach((to, from, next) => {
     });
   } 
   // Jika pengguna sudah login dokter dan membuka halaman login
-  else if (to.path === '/login' && token) {
+  else if ((to.path === '/auth/login' || to.path === '/login') && token) {
     next({ path: '/dashboard' });
   } 
   else {

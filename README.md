@@ -121,7 +121,7 @@ Untuk menjaga privasi medis dan mencegah pasien mengakses dashboard pemanggilan 
    - `DELETE /api/rekam-medis/:id` : Menghapus data rekam medis.
 
 3. **Frontend Navigation Guard**:
-   - Pasien yang mencoba mengakses rute `/dashboard` atau `/rekam-medis` secara langsung akan otomatis diblokir dan dialihkan ke `/login?unauthorized=1` dengan banner peringatan.
+   - Pasien yang mencoba mengakses rute `/dashboard` atau `/rekam-medis` secara langsung akan otomatis diblokir dan dialihkan ke `/auth/login?unauthorized=1` dengan banner peringatan.
    - Axios Request Interceptor otomatis menyisipkan token `Bearer <JWT>` pada setiap panggilan API dokter.
 
 ### 🔑 Kredensial Akun Default Dokter

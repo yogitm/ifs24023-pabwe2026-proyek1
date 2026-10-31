@@ -68,10 +68,10 @@ export function setupAxiosAuth(router) {
     (error) => {
       if (error.response && error.response.status === 401) {
         // Jika token tidak valid / sesi habis, logout dan lempar ke halaman login
-        if (router && router.currentRoute.value.path !== '/login') {
+        if (router && router.currentRoute.value.path !== '/auth/login') {
           clearAuth();
           router.push({
-            path: '/login',
+            path: '/auth/login',
             query: {
               redirect: router.currentRoute.value.fullPath,
               sessionExpired: '1'
