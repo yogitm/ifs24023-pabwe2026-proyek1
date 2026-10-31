@@ -82,7 +82,8 @@ function initDatabase() {
 
     insertUser.run('dokter', defaultPasswordHash, 'dr. Budi Santoso, Sp.PD', 'dokter', 'SIP.503/442/SIP-D/2024');
     insertUser.run('dr.siti', defaultPasswordHash, 'dr. Siti Aminah, Sp.A', 'dokter', 'SIP.503/443/SIP-D/2024');
-    console.log('🩺 Default Akun Dokter berhasil dibuat (username: dokter / password: password123)');
+    insertUser.run('admin', defaultPasswordHash, 'Administrator MedQueue', 'admin', 'ADM-001');
+    console.log('🩺 Default Akun Dokter & Admin berhasil dibuat (username: dokter / admin | password: password123)');
   }
 
   console.log('✅ SQLite Database & Tables initialized successfully.');

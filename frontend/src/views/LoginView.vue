@@ -151,7 +151,7 @@ const setDemoAccount = (user, pass) => {
             <div class="font-medium">{{ successMessage }}</div>
           </div>
 
-          <form @submit.prevent="handleLogin" class="space-y-5">
+          <form id="form-login" name="form-login" @submit.prevent="handleLogin" class="space-y-5">
             <!-- Input Username -->
             <div>
               <label for="username" class="block text-sm font-semibold text-slate-700 mb-1.5">
@@ -163,6 +163,8 @@ const setDemoAccount = (user, pass) => {
                 </div>
                 <input
                   id="username"
+                  name="username"
+                  data-testid="username"
                   v-model="username"
                   type="text"
                   placeholder="Masukkan username dokter (misal: dokter)"
@@ -184,6 +186,8 @@ const setDemoAccount = (user, pass) => {
                 </div>
                 <input
                   id="password"
+                  name="password"
+                  data-testid="password"
                   v-model="password"
                   :type="showPassword ? 'text' : 'password'"
                   placeholder="Masukkan password akun dokter"
@@ -205,9 +209,12 @@ const setDemoAccount = (user, pass) => {
 
             <!-- Tombol Masuk -->
             <button
+              id="btn-submit"
+              name="btn-submit"
+              data-testid="btn-submit"
               type="submit"
               :disabled="loading"
-              class="w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-sm shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed group cursor-pointer"
+              class="btn-submit w-full py-3.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-bold text-sm shadow-lg shadow-emerald-200 transition-all flex items-center justify-center space-x-2 disabled:opacity-60 disabled:cursor-not-allowed group cursor-pointer"
             >
               <span v-if="!loading" class="flex items-center space-x-2">
                 <span>Masuk ke Dashboard Dokter</span>

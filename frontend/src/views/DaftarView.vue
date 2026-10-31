@@ -218,9 +218,11 @@ const printTicket = () => {
           <!-- Tombol Submit -->
           <div class="pt-2">
             <button
+              id="btn-submit"
+              name="btn-submit"
               type="submit"
               :disabled="loading"
-              class="w-full flex items-center justify-center px-6 py-3.5 rounded-xl text-white font-bold text-base bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] transition-all shadow-lg shadow-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed"
+              class="btn-submit w-full flex items-center justify-center px-6 py-3.5 rounded-xl text-white font-bold text-base bg-emerald-600 hover:bg-emerald-700 active:scale-[0.99] transition-all shadow-lg shadow-emerald-200 disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg 
                 v-if="loading" 
