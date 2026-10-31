@@ -19,4 +19,4 @@ cd /opt/medqueue/frontend
 npm install
 npm run build
 
-echo "✅ [4/4] Deployment selesai! Aplikasi MedQueue live di https://medqueue.yogitrim.my.id"
+echo "✅ [4/4] Deployment selesai! Aplikasi MedQueue live di https://ifs24023-pabwe2026-proyek1.yogitrim.my.id"
